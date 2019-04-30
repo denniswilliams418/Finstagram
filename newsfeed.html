@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head><b>Newsfeed</b></head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+
+</style>
+
+<form action="/home">
+    <a href="/home">Home</a>
+</form>
+<br>
+<form action="/logout">
+    <a href="/logout">Logout</a>
+</form>
+<br>
+
+Here is your newsfeed:
+
+<table>
+    <th>Photo Owner</th>
+    <th>Photo ID</th>
+    <th>Timestamp</th>
+    <th>Filepath</th>
+    <th>Caption</th>
+    <th>Tags</th>
+
+    {% for line in images %}
+    <tr>
+        <td>{{line.photoOwner}}</td>
+        <td>{{line.photoID}}</td>
+        <td>{{line.timestamp}}</td>
+        <td>{{line.filepath}}</td>
+        <td>{{line.caption}}</td>
+        <td>{% for tag in tags %} {% if line.photoID == tag.photoID %} {{tag.username}} {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+
+</html>

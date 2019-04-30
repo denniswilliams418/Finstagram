@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head><b>Updates from you close friend groups</b></head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+<form action="/home">
+    <a href="/home">Home</a>
+</form>
+<br>
+<form action="/logout">
+    <a href="/logout">Logout</a>
+</form>
+<br>
+
+Here are some updates from your Close Friend Groups:
+
+<table>
+    <th>Group Name</th>
+    <th>Photo Owner</th>
+    <th>Photo ID</th>
+    <th>Timestamp</th>
+    <th>Filepath</th>
+    <th>Caption</th>
+
+    {% for line in images %}
+    <tr>
+        <td>{{line.groupName}}</td>
+        <td>{{line.photoOwner}}</td>
+        <td>{{line.photoID}}</td>
+        <td>{{line.timestamp}}</td>
+        <td>{{line.filePath}}</td>
+        <td>{{line.caption}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+
+</html>

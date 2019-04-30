@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head><b>Your Follow Requests</b></head>
+<body>
+
+<style type="text/css">
+        table, th, td {
+            border: 1px solid black;
+        }
+
+
+
+
+
+
+
+
+
+
+</style>
+<br><br>
+Here are users who have requested to follow you:
+
+<table>
+    <th>Username</th>
+    <th>Name</th>
+
+    {% for req in seeReqs %}
+    <tr>
+
+        <td>{{req.followerUsername}}</td>
+        <td>{{req.fname + " " + req.lname}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br><br>
+<form action="/acceptRequest" method="POST">
+    <br>
+    <input type="text" name="followerUsername" placeholder="Enter username" required/>
+    <input type="submit" role="button" value="Accept Request"/>
+    <br>
+</form>
+
+<form action="/declineRequest" method="POST">
+    <br>
+    <input type="text" name="followerUsername" placeholder="Enter username" required/>
+    <input type="submit" role="button" value="Decline Request"/>
+    <br>
+</form>
+<br><br>
+
+<a href="/home">Return to Home</a>
+
+
+</body>
+
+
+</html>

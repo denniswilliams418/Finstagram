@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head><b>Your Tag Requests</b></head>
+<body>
+
+<style type="text/css">
+        table, th, td {
+            border: 1px solid black;
+        }
+
+
+</style>
+<br><br>
+Here are users who have requested to tag you in a photo:
+
+<table>
+    <th>Username</th>
+
+    {% for req in tagQuery %}
+    <tr>
+        {% if username == req.username %}
+
+        <td>{{req.photoID}}</td>
+
+        {% endif %}
+    <tr>
+        {% endfor %}
+
+</table>
+
+<br><br>
+<form action="/acceptRequest" method="POST">
+    <br>
+    <input type="text" name="photoID" placeholder="Enter photoID of tagged photo" required/>
+    <input type="submit" role="button" value="Accept Request"/>
+    <br>
+</form>
+
+<form action="/declineRequest" method="POST">
+    <br>
+    <input type="text" name="photoID" placeholder="Enter photoID of tagged photo" required/>
+    <input type="submit" role="button" value="Decline Request"/>
+    <br>
+</form>
+<br><br>
+
+Using the form below, you may tag someone in a photo!
+<br>
+<form action="/tagUser" method="POST">
+    <input type="text" name="photoID" placeholder="Enter photoID of photo being tagged" required/>
+    <input type="text" name="taggedUsername" placeholder="Enter username of person being tagged" required/>
+    <input type="submit" role="button" value="Tag User"/>
+</form>
+
+<a href="/home">Return to Home</a>
+
+
+</body>
+
+
+</html>
